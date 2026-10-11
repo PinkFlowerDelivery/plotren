@@ -21,3 +21,16 @@ add_executable(plotren ${source})
 
 target_include_directories(plotren PRIVATE src)
 target_link_libraries(plotren Vulkan::Vulkan glfw glm::glm)
+target_sources(plotren
+  PUBLIC
+    FILE_SET CXX_MODULES FILES
+    src/window/window.cpp
+
+     src/vk/core/core.cpp
+     src/vk/core/instance.cpp
+     src/vk/core/pdevice.cpp
+     src/vk/core/surface.cpp
+     src/vk/core/device.cpp
+
+     src/vk/utils.cpp
+)

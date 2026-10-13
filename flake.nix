@@ -13,7 +13,7 @@
         let
           pkgs = import nixpkgs { inherit system; };
         in
-        pkgs.mkShell.override { stdenv = pkgs.gcc14Stdenv; } {
+        pkgs.mkShell {
 
           nativeBuildInputs = with pkgs; [
             cmake

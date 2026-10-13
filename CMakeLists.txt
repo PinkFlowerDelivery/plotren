@@ -32,5 +32,8 @@ target_sources(plotren
      src/vk/core/surface.cpp
      src/vk/core/device.cpp
 
+     src/vk/present/present.cpp
+     src/vk/present/swapchain.cpp
+
      src/vk/utils.cpp
 )

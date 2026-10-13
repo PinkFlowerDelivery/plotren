@@ -2,10 +2,10 @@ Checks: >
   bugprone-*,
   clang-diagnostic-*,
   clang-analyzer-*,
-  cppcoreguidelines-*,
   modernize-*,
   -modernize-use-trailing-return-type,
   -cppcoreguidelines-avoid-magic-numbers,
+  -cppcoreguidelines-*,
 
 CheckOptions:
   - key: modernize-use-nullptr.NullMacros

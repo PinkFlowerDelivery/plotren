@@ -4,6 +4,8 @@ module;
 #include <vulkan/vulkan.h>
 #include <vulkan/vulkan_core.h>
 
+#include <optional>
+
 export module core;
 
 import :instance;
@@ -25,5 +27,21 @@ export class CoreContext {
         device_ = createDevice(physDeviceContext_.physDevice,
                                physDeviceContext_.familiesContext);
     }
+
+    [[nodiscard]] VkSurfaceKHR getSurface() const { return surface_; }
+
+    [[nodiscard]] VkPhysicalDevice getPhysicalDevice() const {
+        return physDeviceContext_.physDevice;
+    }
+    [[nodiscard]] QueueFamiliesContext getQueueFamiliesContext() const {
+        return physDeviceContext_.familiesContext;
+    }
+    [[nodiscard]] std::optional<uint32_t> getGraphicFamily() const {
+        return physDeviceContext_.familiesContext.graphicsFamily;
+    }
+    [[nodiscard]] std::optional<uint32_t> getPresentFamily() const {
+        return physDeviceContext_.familiesContext.presentFamily;
+    }
+    [[nodiscard]] VkDevice getDevice() const { return device_; }
 };
 }  // namespace core

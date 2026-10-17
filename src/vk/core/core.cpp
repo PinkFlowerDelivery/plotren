@@ -21,7 +21,8 @@ export class CoreContext {
     VkDevice device_;
 
    public:
-    CoreContext(GLFWwindow* window) : instance_(createInstance(true)) {
+    CoreContext(GLFWwindow* window) {
+        instance_ = createInstance(true);
         surface_ = createSurface(instance_, window);
         physDeviceContext_ = pickPhysicalDevice(instance_, surface_);
         device_ = createDevice(physDeviceContext_.physDevice,

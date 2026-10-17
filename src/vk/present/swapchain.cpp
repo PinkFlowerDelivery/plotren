@@ -12,6 +12,11 @@ export module present:swapchain;
 import vkUtils;
 import core;
 
+export struct SwapchainContext {
+    VkSwapchainKHR swapchain;
+    VkFormat format;
+};
+
 VkSurfaceFormatKHR chooseSurfaceFormat(
     const std::vector<VkSurfaceFormatKHR>& availableFormats,
     VkFormat targetFormat, VkColorSpaceKHR targetColorSpace) {
@@ -49,10 +54,10 @@ VkExtent2D chooseExtent(GLFWwindow* window,
     return actualExtent;
 }
 
-export
+export SwapchainContext createSwapchain(GLFWwindow* window,
+                                        core::CoreContext coreContext) {
+    SwapchainContext context;
 
-    VkSwapchainKHR
-    createSwapchain(GLFWwindow* window, core::CoreContext coreContext) {
     uint32_t formatCount;
     vkUtils::checkResult(vkGetPhysicalDeviceSurfaceFormatsKHR(
         coreContext.getPhysicalDevice(), coreContext.getSurface(), &formatCount,
@@ -71,6 +76,8 @@ export
     VkSurfaceFormatKHR surfaceFormat =
         chooseSurfaceFormat(availableFormats, VK_FORMAT_R8G8B8A8_SRGB,
                             VK_COLORSPACE_SRGB_NONLINEAR_KHR);
+
+    context.format = surfaceFormat.format;
 
     std::vector<uint32_t> familyIndices;
     if (coreContext.getQueueFamiliesContext().isUnifiedQueue()) {
@@ -101,10 +108,8 @@ export
         .oldSwapchain = VK_NULL_HANDLE,
     };
 
-    VkSwapchainKHR swapchain;
-
     vkUtils::checkResult(vkCreateSwapchainKHR(
-        coreContext.getDevice(), &createInfo, nullptr, &swapchain));
+        coreContext.getDevice(), &createInfo, nullptr, &context.swapchain));
 
-    return swapchain;
+    return context;
 };

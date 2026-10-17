@@ -34,6 +34,8 @@ target_sources(plotren
 
      src/vk/present/present.cpp
      src/vk/present/swapchain.cpp
+     src/vk/present/images.cpp
+     src/vk/present/imageViews.cpp
 
      src/vk/utils.cpp
 )

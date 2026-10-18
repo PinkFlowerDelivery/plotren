@@ -29,6 +29,12 @@ export class CoreContext {
                                physDeviceContext_.familiesContext);
     }
 
+    ~CoreContext() {
+        vkDestroyDevice(device_, nullptr);
+        vkDestroySurfaceKHR(instance_, surface_, nullptr);
+        vkDestroyInstance(instance_, nullptr);
+    }
+
     [[nodiscard]] VkSurfaceKHR getSurface() const { return surface_; }
 
     [[nodiscard]] VkPhysicalDevice getPhysicalDevice() const {

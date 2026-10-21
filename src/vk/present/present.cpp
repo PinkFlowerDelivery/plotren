@@ -11,6 +11,7 @@ export module present;
 import :swapchain;
 import :images;
 import :imageViews;
+import core;
 
 namespace vk {
 
@@ -23,7 +24,7 @@ export class Present {
     std::vector<VkImageView> imageViews_;
 
    public:
-    Present(GLFWwindow* window, core::CoreContext coreCtx) {
+    Present(GLFWwindow* window, vk::CoreContext coreCtx) {
         swapchainContext_ = createSwapchain(window, coreCtx);
         images_ = getSwapchainImages(coreCtx.getDevice(),
                                      swapchainContext_.swapchain);

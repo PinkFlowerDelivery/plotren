@@ -13,7 +13,7 @@ import :pdevice;
 import :surface;
 import :device;
 
-namespace core {
+namespace vk {
 export class CoreContext {
     VkInstance instance_;
     VkSurfaceKHR surface_;
@@ -51,4 +51,4 @@ export class CoreContext {
     }
     [[nodiscard]] VkDevice getDevice() const { return device_; }
 };
-}  // namespace core
+}  // namespace vk

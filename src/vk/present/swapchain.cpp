@@ -55,7 +55,7 @@ VkExtent2D chooseExtent(GLFWwindow* window,
 }
 
 export SwapchainContext createSwapchain(GLFWwindow* window,
-                                        core::CoreContext coreContext) {
+                                        vk::CoreContext coreContext) {
     SwapchainContext context;
 
     uint32_t formatCount;

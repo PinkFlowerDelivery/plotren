@@ -39,7 +39,6 @@ bool checkValidationLayersSupport() {
     return true;
 }
 
-namespace core {
 export VkInstance createInstance(bool isValidationLayersEnabled = false) {
     VkApplicationInfo appInfo{};
     appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
@@ -70,4 +69,3 @@ export VkInstance createInstance(bool isValidationLayersEnabled = false) {
 
     return instance;
 }
-}  // namespace core
